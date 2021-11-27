@@ -89,10 +89,8 @@ func (s *suite) runStep(ctx context.Context, pickle *Scenario, step *Step, prevS
 			}
 		}
 
-		defer func() {
-			// run after step handlers
-			rctx, err = s.runAfterStepHooks(ctx, step, sr.Status, err)
-		}()
+		// run after step handlers
+		rctx, err = s.runAfterStepHooks(ctx, step, sr.Status, err)
 
 		if prevStepErr != nil {
 			return
